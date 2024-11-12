@@ -1,0 +1,24 @@
+[1.095s] Invoking command in '/home/chan/project_ws/src/self_driving_car_pkg': PYTHONPATH=/home/chan/project_ws/build/self_driving_car_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/self_driving_car_pkg build --build-base /home/chan/project_ws/build/self_driving_car_pkg/build install --record /home/chan/project_ws/build/self_driving_car_pkg/install.log --install-scripts $base/lib/self_driving_car_pkg --single-version-externally-managed install_data
+[1.479s] running egg_info
+[1.480s] writing ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/PKG-INFO
+[1.480s] writing dependency_links to ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/dependency_links.txt
+[1.480s] writing entry points to ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/entry_points.txt
+[1.481s] writing requirements to ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/requires.txt
+[1.481s] writing top-level names to ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/top_level.txt
+[1.541s] reading manifest file '../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/SOURCES.txt'
+[1.543s] writing manifest file '../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info/SOURCES.txt'
+[1.543s] running build
+[1.543s] running build_py
+[1.548s] running install
+[1.550s] running install_lib
+[1.554s] running install_data
+[1.555s] running install_egg_info
+[1.558s] removing '/home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages/self_driving_car_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+[1.558s] Copying ../../build/self_driving_car_pkg/self_driving_car_pkg.egg-info to /home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages/self_driving_car_pkg-0.0.0-py3.8.egg-info
+[1.560s] running install_scripts
+[1.588s] Installing computer_vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[1.588s] Installing drive_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[1.588s] Installing spawner_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[1.589s] Installing vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[1.591s] writing list of installed files to '/home/chan/project_ws/build/self_driving_car_pkg/install.log'
+[1.621s] Invoked command in '/home/chan/project_ws/src/self_driving_car_pkg' returned '0': PYTHONPATH=/home/chan/project_ws/build/self_driving_car_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/self_driving_car_pkg build --build-base /home/chan/project_ws/build/self_driving_car_pkg/build install --record /home/chan/project_ws/build/self_driving_car_pkg/install.log --install-scripts $base/lib/self_driving_car_pkg --single-version-externally-managed install_data

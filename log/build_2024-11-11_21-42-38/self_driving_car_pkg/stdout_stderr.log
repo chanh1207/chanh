@@ -1,0 +1,29 @@
+running develop
+running egg_info
+writing self_driving_car_pkg.egg-info/PKG-INFO
+writing dependency_links to self_driving_car_pkg.egg-info/dependency_links.txt
+writing entry points to self_driving_car_pkg.egg-info/entry_points.txt
+writing requirements to self_driving_car_pkg.egg-info/requires.txt
+writing top-level names to self_driving_car_pkg.egg-info/top_level.txt
+reading manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+writing manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages/self-driving-car-pkg.egg-link (link to .)
+Installing computer_vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing drive_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing spawner_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+
+Installed /home/chan/project_ws/build/self_driving_car_pkg
+running symlink_data
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/resource/self_driving_car_pkg -> /home/chan/project_ws/install/self_driving_car_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/package.xml -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/launch/world_gazebo.launch.py -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/launch
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/launch/maze_solving_world.launch.py -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/launch
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/launch/test_laneFollow.launch.py -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/launch
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/launch/record_and_drive.launch.py -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/launch
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/scripts/lights_spawner.bash -> /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/scripts/lights_spawner_maze.bash -> /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/worlds/sdc.world -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/worlds
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/worlds/maze_solving.world -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/worlds
+symbolically linking /home/chan/project_ws/build/self_driving_car_pkg/worlds/Lane_follow_test.world -> /home/chan/project_ws/install/self_driving_car_pkg/share/self_driving_car_pkg/worlds

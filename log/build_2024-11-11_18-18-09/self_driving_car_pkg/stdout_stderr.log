@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing self_driving_car_pkg.egg-info/PKG-INFO
+writing dependency_links to self_driving_car_pkg.egg-info/dependency_links.txt
+writing entry points to self_driving_car_pkg.egg-info/entry_points.txt
+writing requirements to self_driving_car_pkg.egg-info/requires.txt
+writing top-level names to self_driving_car_pkg.egg-info/top_level.txt
+reading manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+writing manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages/self-driving-car-pkg.egg-link (link to .)
+Installing computer_vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing drive_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing spawner_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+Installing vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+
+Installed /home/chan/project_ws/build/self_driving_car_pkg
+running symlink_data
