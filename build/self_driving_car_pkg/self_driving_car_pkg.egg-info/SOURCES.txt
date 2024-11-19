@@ -17,6 +17,7 @@ scripts/lights_spawner.bash
 scripts/lights_spawner_maze.bash
 self_driving_car_pkg/Drive_Bot.py
 self_driving_car_pkg/__init__.py
+self_driving_car_pkg/camera_node.py
 self_driving_car_pkg/computer_vision_node.py
 self_driving_car_pkg/drive_node.py
 self_driving_car_pkg/sdc_V2.py
@@ -66,5 +67,6 @@ self_driving_car_pkg/config/__init__.py
 self_driving_car_pkg/config/config.py
 self_driving_car_pkg/data/__init__.py
 worlds/Lane_follow_test.world
+worlds/a
 worlds/maze_solving.world
 worlds/sdc.world

@@ -1,0 +1,23 @@
+[0.571s] Invoking command in '/home/chan/project_ws/build/self_driving_car_pkg': PYTHONPATH=/home/chan/project_ws/build/self_driving_car_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/chan/project_ws/build/self_driving_car_pkg/build --no-deps symlink_data
+[0.788s] running develop
+[0.924s] running egg_info
+[0.924s] writing self_driving_car_pkg.egg-info/PKG-INFO
+[0.924s] writing dependency_links to self_driving_car_pkg.egg-info/dependency_links.txt
+[0.924s] writing entry points to self_driving_car_pkg.egg-info/entry_points.txt
+[0.924s] writing requirements to self_driving_car_pkg.egg-info/requires.txt
+[0.924s] writing top-level names to self_driving_car_pkg.egg-info/top_level.txt
+[0.954s] reading manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+[0.955s] writing manifest file 'self_driving_car_pkg.egg-info/SOURCES.txt'
+[0.985s] running build_ext
+[0.985s] Creating /home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages/self-driving-car-pkg.egg-link (link to .)
+[0.986s] Installing computer_vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.986s] Installing drive_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.986s] Installing sdc_V2 script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.986s] Installing spawner_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.986s] Installing upper_camera_recording script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.986s] Installing video_recording_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.987s] Installing vision_node script to /home/chan/project_ws/install/self_driving_car_pkg/lib/self_driving_car_pkg
+[0.987s] 
+[0.987s] Installed /home/chan/project_ws/build/self_driving_car_pkg
+[0.987s] running symlink_data
+[1.008s] Invoked command in '/home/chan/project_ws/build/self_driving_car_pkg' returned '0': PYTHONPATH=/home/chan/project_ws/build/self_driving_car_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chan/project_ws/install/self_driving_car_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/chan/project_ws/build/self_driving_car_pkg/build --no-deps symlink_data
