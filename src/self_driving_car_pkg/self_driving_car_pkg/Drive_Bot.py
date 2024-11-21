@@ -1,29 +1,12 @@
 from .Detection.Lanes.Lane_Detection import detect_Lane
 from .Detection.Signs.SignDetectionApi import detect_Signs
 from .Detection.TrafficLights.TrafficLights_Detection import detect_TrafficLights
+from .Detection.StopLines.StopLine_Detection import detect_StopLine
 import cv2
 from numpy import interp
 from .config import config
-# 4 Improvements that will be done in (Original) SDC control algorithm
-# a) lane assist had iregular steering predictions
-#    Solution : use rolling average filter
-# b) Considering road is barely 1.5 car wide. A quarter of Image width for distance from the road mid 
-#                                             from the predicted road center seems bit too harsh
-#    Solution:  Increase to half of image width
-# c) Car was drifting offroad in sharper turns causing it to lose track of road
-#    Solution: Increase weightage of distance (road_center <=> car front) from 50% to 65% 
-#              So steers more in case it drift offroad
-# d) Car not utilizing its full steering range causing it to drift offroad in sharp turns
-#    Solution: Increase car max turn capability
-
-# 2 additons to Drive_Bot.py
-# a) 1 control block added for enable/disable Sat_Nav feature
-# b) Track Traffic Light and Road Speed Limits (State)  ==> Essential for priority control mechanism 
-#                                                           That we will create for integrating Sat_Nav 
-#                                                           ability to the SDC
-
-
 from collections import deque
+
 class Debugging:
 
     def __init__(self):
@@ -148,8 +131,6 @@ class Control:
 
     def __init__(self):
         self.prev_Mode = "Detection"
-
-
         self.prev_Mode_LT = "Detection"
         self.car_speed = 80
         self.angle_of_car = 0
@@ -163,6 +144,8 @@ class Control:
         self.GO_MODE_ACTIVATED = False
         self.STOP_MODE_ACTIVATED = False
 
+        self.stop_line_detected = False
+        self.stop_wait_iterations = 0
         # [NEW]: Deque member variable created for emulating rolling average filter to get smoothed Lane's ASsist 
         self.angle_queue = deque(maxlen=10)
 
@@ -283,8 +266,19 @@ class Control:
                     self.TrafficLight_iterations = self.TrafficLight_iterations + 1
         return a,b
 
+    def OBEY_StopLine(self, frame):
+        # Stop line detection logic
+        if detect_StopLine(frame):
+            self.stop_line_detected = True
+            self.stop_wait_iterations = 40  # Wait for some iterations (e.g., 40 iterations)
+            self.car_speed = 0
+        elif self.stop_wait_iterations > 0:
+            self.stop_wait_iterations -= 1
+            self.car_speed = 0
+        else:
+            self.stop_line_detected = False
 
-    def drive_car(self,Current_State,Inc_TL,Inc_LT):
+    def drive_car(self,Current_State,Inc_TL,Inc_LT, frame):
         """Act on extracted information based on the SDC control mechanism
 
         Args:
@@ -303,29 +297,31 @@ class Control:
         [Distance, Curvature, frame_disp , Mode , Tracked_class, Traffic_State, CloseProximity] = Current_State
 
         current_speed = 0
+
+        self.OBEY_StopLine(frame)
         
-        if((Distance != -1000) and (Curvature != -1000)):
+        if not self.stop_line_detected:
+            if ((Distance != -1000) and (Curvature != -1000)):
+                # [NEW]: Very Important: Minimum Sane Distance that a car can be from the perfect lane to follow is increased to half its fov.
+                #                        This means sharp turns only in case where we are way of target XD
+                self.angle_of_car, current_speed = self.follow_Lane(int(frame_disp.shape[1] / 2), Distance, Curvature, Mode, Tracked_class)
+            # [NEW]: Keeping track of orig steering angle and smoothed steering angle using rolling average
+            config.angle_orig = self.angle_of_car
+            # Rolling average applied to get smoother steering angles for robot
+            self.angle_queue.append(self.angle_of_car)
+            self.angle_of_car = (sum(self.angle_queue) / len(self.angle_queue))
+            config.angle = self.angle_of_car
 
-            # [NEW]: Very Important: Minimum Sane Distance that a car can be from the perfect lane to follow is increased to half its fov.
-            #                        This means sharp turns only in case where we are way of target XD
-            self.angle_of_car , current_speed = self.follow_Lane(int(frame_disp.shape[1]/2), Distance,Curvature , Mode , Tracked_class )
-        # [NEW]: Keeping track of orig steering angle and smoothed steering angle using rolling average
-        config.angle_orig = self.angle_of_car
-        # Rolling average applied to get smoother steering angles for robot
-        self.angle_queue.append(self.angle_of_car)
-        self.angle_of_car = (sum(self.angle_queue)/len(self.angle_queue))
-        config.angle = self.angle_of_car
-        if Inc_LT:
-            self.angle_of_car,current_speed, Detected_LeftTurn, Activat_LeftTurn = self.Obey_LeftTurn(self.angle_of_car,current_speed,Mode,Tracked_class)
-        else:
-            Detected_LeftTurn = False
-            Activat_LeftTurn = False
+            if Inc_LT:
+                self.angle_of_car, current_speed, Detected_LeftTurn, Activat_LeftTurn = self.Obey_LeftTurn(self.angle_of_car, current_speed, Mode, Tracked_class)
+            else:
+                Detected_LeftTurn = False
+                Activat_LeftTurn = False
 
-        if Inc_TL:
-            self.angle_of_car,current_speed = self.OBEY_TrafficLights(self.angle_of_car,current_speed,Traffic_State,CloseProximity)        
+            if Inc_TL:
+                self.angle_of_car, current_speed = self.OBEY_TrafficLights(self.angle_of_car, current_speed, Traffic_State, CloseProximity)
 
-
-        return self.angle_of_car,current_speed, Detected_LeftTurn, Activat_LeftTurn 
+        return self.angle_of_car, current_speed, Detected_LeftTurn, Activat_LeftTurn
 
 class Car:
     def __init__( self,Inc_TL = True, Inc_LT = True ):
@@ -405,7 +401,7 @@ class Car:
 
         Current_State = [distance, Curvature, img, Mode, Tracked_class, Traffic_State, CloseProximity]
 
-        Angle,Speed, Detected_LeftTurn, Activat_LeftTurn  = self.Control_.drive_car(Current_State,self.Inc_TL,self.Inc_LT)
+        Angle,Speed, Detected_LeftTurn, Activat_LeftTurn  = self.Control_.drive_car(Current_State,self.Inc_TL,self.Inc_LT, frame)
         
         # [NEW]: Updating State Variable with current state 
         self.Tracked_class = Tracked_class
